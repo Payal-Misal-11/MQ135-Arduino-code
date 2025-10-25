@@ -1,0 +1,23 @@
+// MQ135 Basic Reading Code
+const int MQ135_PIN = A0;  // Analog pin connected to MQ135 output
+int sensorValue = 0;
+
+void setup() {
+  Serial.begin(9600);     // Start serial communication
+  Serial.println("MQ135 Sensor Reading Started...");
+}
+
+void loop() {
+  sensorValue = analogRead(MQ135_PIN); // Read analog value (0–1023)
+  
+  // Convert analog value to voltage (optional)
+  float voltage = sensorValue * (5.0 / 1023.0);
+  
+  Serial.print("MQ135 Analog Value: ");
+  Serial.print(sensorValue);
+  Serial.print("  |  Voltage: ");
+  Serial.print(voltage);
+  Serial.println(" V");
+
+  delay(2000); // Read every 2 seconds
+}
